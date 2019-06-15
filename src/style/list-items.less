@@ -55,6 +55,35 @@
   }
 }
 
+.loading-item {
+  height: 3rem;
+  width: 100%;
+  background: @color-empty;
+  display: flex;
+  align-items: center;
+  line-height: 1rem;
+  padding-left: 16px;
+
+  .glow-checkbox,
+  .glow-text span {
+    animation: glow 1.5s ease-in-out infinite;
+    background: @color-rare;
+    color: transparent;
+    cursor: progress;
+    display: inline-block;
+  }
+
+  .glow-checkbox {
+    margin-right: 16px;
+    width: 12px;
+    height: 12px;
+  }
+
+  & + .loading-item {
+    border-top: 1px solid #f0f9fb;
+  }
+}
+
 .list-items {
   position: relative;
   background: @color-empty;
