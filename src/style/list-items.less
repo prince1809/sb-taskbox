@@ -1,0 +1,66 @@
+@import "./utils.less";
+
+.list-heading {
+  .title-caps;
+  .type-bold;
+  font-size: 11px;
+  padding-left: 15px;
+}
+
+.list-item {
+  .font-s2;
+
+  display: flex;
+  flex-wrap: wrap;
+  height: 3rem;
+  width: 100%;
+  background: @color-empty;
+  transition: all ease-out 150ms;
+
+  .title {
+    .ellipsized;
+    flex: 1;
+  }
+
+  input[type="text"] {
+    background: transparent;
+    width: 100%;
+
+    &:focus {
+      cursor: text;
+    }
+  }
+
+  .actions {
+    transition: all 200ms ease-in;
+    padding-right: 20px;
+
+    a {
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+
+      color: @color-rare;
+      &:hover {
+        color: @color-well;
+      }
+    }
+
+    [class^="icon-"] {
+      .font-s3;
+
+      line-height: 3rem;
+      text-align: center;
+    }
+  }
+}
+
+.list-items {
+  position: relative;
+  background: @color-empty;
+  min-height: 288px;
+  .select-placeholder {
+    border: none;
+    width: 48px;
+  }
+}
