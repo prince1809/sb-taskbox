@@ -12,6 +12,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "build-css": "lessc src/style/index.less src/index.css",
+    "watch-css": "npm run build-css && grunt",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -34,6 +36,10 @@
     "@storybook/addon-actions": "^5.1.8",
     "@storybook/addon-links": "^5.1.8",
     "@storybook/addons": "^5.1.8",
-    "@storybook/react": "^5.1.8"
+    "@storybook/react": "^5.1.8",
+    "grunt": "^1.0.4",
+    "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "less": "^3.9.0"
   }
 }
