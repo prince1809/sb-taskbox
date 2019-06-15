@@ -35,11 +35,14 @@
   "devDependencies": {
     "@storybook/addon-actions": "^5.1.8",
     "@storybook/addon-links": "^5.1.8",
+    "@storybook/addon-storyshots": "^5.1.8",
     "@storybook/addons": "^5.1.8",
     "@storybook/react": "^5.1.8",
     "grunt": "^1.0.4",
     "grunt-contrib-less": "^2.0.0",
     "grunt-contrib-watch": "^1.1.0",
-    "less": "^3.9.0"
+    "less": "^3.9.0",
+    "react-test-renderer": "^16.8.6",
+    "require-context.macro": "^1.0.4"
   }
 }
