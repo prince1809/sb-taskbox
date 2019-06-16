@@ -1,7 +1,11 @@
 import React from 'react';
-import Task from './Task';
+import PropTypes from 'prop-types';
 
-function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
+import Task from './Task';
+import { connect } from 'react-redux';
+import { archiveTask, pinTask } from '../lib/redux';
+
+export function PureTaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   const events = {
     onPinTask,
     onArchiveTask,
@@ -17,24 +21,28 @@ function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   );
 
   if (loading) {
-    return <div className="list-items">
-      {LoadingRow}
-      {LoadingRow}
-      {LoadingRow}
-      {LoadingRow}
-      {LoadingRow}
-      {LoadingRow}
-    </div>;
+    return (
+      <div className="list-items">
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+        {LoadingRow}
+      </div>
+    );
   }
 
   if (tasks.length === 0) {
-    return <div className="list-items">
-      <div className="wrapper-message">
-        <span className="icon-check" />
-        <div className="title-message">You have no tasks</div>
-        <div className="subtitle-message">Sit back and relax</div>
+    return (
+      <div className="list-items">
+        <div className="wrapper-message">
+          <span className="icon-check" />
+          <div className="title-message">You have no tasks</div>
+          <div className="subtitle-message">Sit back and relax</div>
+        </div>
       </div>
-    </div>
+    );
   }
 
   const tasksInOrder = [
@@ -49,4 +57,23 @@ function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   );
 }
 
-export default TaskList;
+PureTaskList.propTypes = {
+  loading: PropTypes.bool,
+  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
+  onPinTask: PropTypes.func.isRequired,
+  onArchiveTask: PropTypes.func.isRequired,
+};
+
+PureTaskList.defaultProps = {
+  loading: false,
+};
+
+export default connect(
+  ({ tasks }) => ({
+    tasks: tasks.filter(t => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'),
+  }),
+  dispatch => ({
+    onArchiveTask: id => dispatch(archiveTask(id)),
+    onPinTask: id => dispatch(pinTask(id)),
+  })
+)(PureTaskList);
