@@ -1,9 +1,10 @@
 @import "../utils.less";
 
-.page.list-show {
+.page.lists-show {
   min-height: 100vh;
   background: @color-empty;
 
+  // Custom nav for lists-show
   nav {
     background: #d3edf4;
     padding: 1.5rem 1.25rem;
@@ -14,20 +15,19 @@
     }
 
     .title-page {
-      .font-m1 {
-        line-height: 2rem;
-        cursor: pointer;
+      .font-m1;
+      line-height: 2rem;
+      cursor: pointer;
 
-        white-space: nowrap;
+      white-space: nowrap;
 
-        .title-wrapper {
-          .ellipsized;
-          .type-bold;
-          color: @color-ancillary;
-          display: inline-block;
-          vertical-align: top;
-          max-width: 100%;
-        }
+      .title-wrapper {
+        .ellipsized;
+        .type-bold;
+        color: @color-ancillary;
+        display: inline-block;
+        vertical-align: top;
+        max-width: 100%;
       }
     }
   }
